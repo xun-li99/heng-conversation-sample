@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN" data-layout="story">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="慢灯：独立制作的对话界面交互样片。两种布局、移动端适配、键盘操作；无模型连接，不上传输入。">
+  <title>慢灯 · 对话界面样片</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%2318202c'/%3E%3Cpath d='M10 23V9h4l4 10V9h4v14h-4L14 13v10z' fill='%23edbc73'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#message">跳到输入框</a>
+  <div class="sample-banner"><span>衡 · 独立交互样片</span><span>示例剧情 / 未连接模型 / 输入不上传</span></div>
+  <div class="workspace">
+    <aside class="sidebar" aria-label="对话背景">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">M</span><div>慢灯<span class="brand-en">A LITTLE ROOM FOR WORDS</span></div></div>
+      <div class="sidebar-copy"><span class="eyebrow">今晚的故事</span><h1>不赶路的<br>一小会儿。</h1><p>雨停了，末班车还没来。<br>把故事留在这里，慢慢接着说。</p></div>
+      <div class="chapter" aria-label="当前示例章节"><span class="chapter-number">03</span><div><span class="eyebrow">当前章节</span><strong>雨后的车站</strong><span>林川 · 虚构角色</span></div></div>
+      <div class="chapter-track" aria-hidden="true"><span></span><span></span><span class="current"></span><span></span><span></span></div>
+      <div class="side-bottom"><span class="small-rule"></span><p>“有些话，不必急着<br>找到一个结尾。”</p><span class="eyebrow">示例对白 · 非真实人物</span></div>
+    </aside>
+
+    <main class="main">
+      <header class="conversation-header">
+        <div class="identity"><span class="avatar" aria-hidden="true">川</span><div><h2>林川 <span>雨后的车站</span></h2><p>今晚的话，可以慢一点。</p></div></div>
+        <div class="header-actions"><button id="about-button" class="icon-button" aria-label="查看样片说明" title="样片说明">i</button><button id="reset-button" class="text-button">重置示例</button></div>
+      </header>
+
+      <div class="view-bar"><div class="segmented" aria-label="布局模板"><button data-mode="story" aria-pressed="true">沉浸叙事</button><button data-mode="compact" aria-pressed="false">轻量对话</button></div><span class="local-note">仅在当前页面演示</span></div>
+
+      <section class="conversation" id="conversation" aria-label="对话内容" tabindex="0">
+        <div class="scene"><span>CHAPTER 03</span><h3>雨停以后</h3><p>站台屋檐的水一滴一滴落下来。<br>远处的灯光，在湿漉漉的地面上拉得很长。</p><div class="scene-divider"><span></span><b aria-hidden="true">✦</b><span></span></div></div>
+        <div id="messages" role="log" aria-live="polite" aria-relevant="additions text" aria-label="示例消息"></div>
+        <button class="latest-button" id="latest-button" hidden>回到最新消息 ↓</button>
+      </section>
+
+      <div class="composer-area">
+        <div class="suggestions" aria-label="示例开场"><button data-prompt="你在看什么？">你在看什么？</button><button data-prompt="如果末班车不来呢？">如果末班车不来呢？</button><button data-prompt="先安静坐一会儿。">先安静坐一会儿。</button></div>
+        <form id="composer" novalidate><label class="sr-only" for="message">输入一段对话，最多500字</label><textarea id="message" maxlength="500" rows="2" placeholder="写下你想接的一句话…"></textarea><div class="composer-bottom"><span id="composer-hint">Enter 发送 · Shift + Enter 换行</span><div class="send-actions"><span id="count" aria-hidden="true">0 / 500</span><button id="send" type="submit" aria-label="发送示例消息" disabled><span>发送</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button type="button" id="cancel" hidden>停止演示</button></div></div></form>
+        <div class="footer-note"><span id="status" role="status">这是界面样片：发送后会播放一段预写示例回复，不是真实 AI 对话。</span></div>
+      </div>
+    </main>
+
+    <aside class="notes" aria-label="场景信息"><span class="eyebrow">SCENE NOTES</span><div class="note-line"></div><dl><div><dt>时间</dt><dd>21:47</dd></div><div><dt>地点</dt><dd>城南 · 旧车站</dd></div><div><dt>天气</dt><dd>雨后，微凉</dd></div></dl><p class="note-quote">我们在同一场雨里，<br>看见了不同的事。</p><span class="note-index">STORY / 003</span></aside>
+  </div>
+
+  <dialog id="about"><div class="dialog-top"><span class="eyebrow">关于这份样片</span><button id="close-about" class="icon-button" aria-label="关闭说明">×</button></div><h2>设计可以看见，<br>交互也可以试。</h2><p>这是衡（AI）独立制作的前端作品，不是客户项目，也不代表任何现有产品。</p><ul><li>两种布局共用同一段对话状态。</li><li>支持键盘输入、中文输入法、停止演示与响应式布局。</li><li>所有回复均为预写示例；没有模型、账号、支付或数据上传。</li><li>刷新或离开页面后，输入内容不会保留。</li></ul><p class="dialog-foot">源文件：HTML / CSS / JavaScript · 无第三方依赖</p></dialog>
+</body>
+</html>
